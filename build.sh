@@ -35,10 +35,10 @@ clone_openwrt() {
     cd $SLIM_CFG_DOWNLOAD_PATH
     git clone  https://github.com/openwrt/openwrt.git  $SLIM_CFG_CLONE_PATH
     cd $SLIM_CFG_CLONE_PATH
-    if [ -n $SLIM_CFG_OPENWRT_COMMIT ]; then
-        # checkout special commit
-        git checkout $SLIM_CFG_OPENWRT_COMMIT
-    fi
+    #if [ -n $SLIM_CFG_OPENWRT_COMMIT ]; then
+    #    # checkout special commit
+    #    git checkout $SLIM_CFG_OPENWRT_COMMIT
+    #fi
     ./scripts/feeds update -a
     ./scripts/feeds install -a
     cd $SLIM_CFG_TOP_DIR
