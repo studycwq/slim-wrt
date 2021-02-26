@@ -1,21 +1,32 @@
 --- a/package/network/config/firewall/Makefile
 +++ b/package/network/config/firewall/Makefile
+@@ -9,7 +9,7 @@
+  include $(TOPDIR)/rules.mk
+
+  PKG_NAME:=firewall
+- PKG_RELEASE:=1
++ PKG_RELEASE:=2
+
+  PKG_SOURCE_PROTO:=git
+  PKG_SOURCE_URL=$(PROJECT_GIT)/project/firewall3.git
 @@ -28,7 +28,7 @@ define Package/firewall
-   SECTION:=net
-   CATEGORY:=Base system
-   TITLE:=OpenWrt C Firewall
--  DEPENDS:=+libubox +libubus +libuci +libip4tc +IPV6:libip6tc +libxtables +kmod-ipt-core +kmod-ipt-conntrack +IPV6:kmod-nf-conntrack6 +kmod-ipt-nat
-+  DEPENDS:=+libubox +libubus +libuci +libip4tc +IPV6:libip6tc +libxtables +kmod-ipt-core +kmod-ipt-conntrack +IPV6:kmod-nf-conntrack6 +kmod-ipt-nat +iptables-mod-fullconenat
- endef
- 
- define Package/firewall/description
+    SECTION:=net
+    CATEGORY:=Base system
+    TITLE:=OpenWrt C Firewall
+-   DEPENDS:=+libubox +libubus +libuci +libip4tc +IPV6:libip6tc +libxtables +kmod-ipt-core +kmod-ipt-conntrack +IPV6:kmod-nf-conntrack6 +kmod-ipt-nat
++   DEPENDS:=+libubox +libubus +libuci +libip4tc +IPV6:libip6tc +libxtables +kmod-ipt-core +kmod-ipt-conntrack +IPV6:kmod-nf-conntrack6 +kmod-ipt-nat +iptables-mod-fullconenat
+  endef
+
+  define Package/firewall/description
 --- a/package/network/config/firewall/files/firewall.config
 +++ b/package/network/config/firewall/files/firewall.config
-@@ -3,6 +3,7 @@ config defaults
+@@ -1,8 +1,9 @@
+  config defaults
+-	option syn_flood	1
++	option syn_flood	0
  	option input		ACCEPT
  	option output		ACCEPT
  	option forward		REJECT
-+	option fullcone	    1
- # Uncomment this line to disable ipv6 rules
- #	option disable_ipv6	1
- 
++ 	option fullcone		0
+  # Uncomment this line to disable ipv6 rules
+  #     option disable_ipv6	1
