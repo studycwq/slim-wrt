@@ -1,5 +1,6 @@
 --- /dev/null
 +++ b/package/network/config/firewall/patches/fullconenat.patch
+@@ -0,0 +1,58 @@
 + --- a/defaults.c
 + +++ b/defaults.c
 + @@ -48,6 +48,8 @@
